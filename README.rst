@@ -8,12 +8,8 @@ data recorded by a 3D motion tracking apparatus.
 Installing
 ----------
 
-Install with pip::
-
-    pip install c3d
-
-Or if you'd like to use the bleeding-edge version, just clone the github
-repository and build and install using the normal Python setup process::
+Clone the github repository and build and install using the normal Python 
+setup process::
 
     git clone https://github.com/EmbodiedCognition/py-c3d
     cd py-c3d
@@ -28,6 +24,8 @@ Tools
 This package includes a script for converting C3D motion data to CSV format
 (``c3d2csv``) and an OpenGL-based visualization tool for observing the motion
 described by a C3D file (``c3d-viewer``).
+
+
 
 Library
 ~~~~~~~
