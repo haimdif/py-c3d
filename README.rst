@@ -25,7 +25,24 @@ This package includes a script for converting C3D motion data to CSV format
 (``c3d2csv``) and an OpenGL-based visualization tool for observing the motion
 described by a C3D file (``c3d-viewer``).
 
+create_c3d_from_json.py
+=======================
+this script will create a .c3d file from a json of the following format:
+# note that each string entry in label_names list should be the same length.
 
+{
+    "label_names" : ["RHCD","RHCE"],
+    "Frames" : [
+        {
+            "RHCD" : [ 1.1,2.2,3.3,0.0,0.0],
+            "RHCE" : [ 4.4,5.5,6.6,0.0,0.0]
+        },
+        {
+            "RHCD" : [ 10.1,20.2,30.3,0.0,0.0],
+            "RHCE" : [ 40.4,50.5,60.6,0.0,0.0]
+        }
+    ]
+}
 
 Library
 ~~~~~~~
