@@ -925,7 +925,7 @@ class Writer(Manager):
     def __init__(self,
                  point_rate=480.,
                  analog_rate=0.,
-                 point_scale=-1.,
+                 point_scale=1.,
                  point_units='mm  ',
                  gen_scale=1.):
         '''Set metadata for this writer.
