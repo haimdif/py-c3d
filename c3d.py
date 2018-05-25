@@ -1064,7 +1064,7 @@ class Writer(Manager):
         # ANALOG group
         group = self.add_group(2, 'ANALOG', 'ANALOG group')
         add('USED', 'analog channel count', 2, '<H', analog.shape[0])
-        add('RATE', 'analog samples per 3d frame', 4, '<f', analog.shape[1])
+        add('RATE', 'analog samples per 3d frame', 4, '<f', 0)
         add('GEN_SCALE', 'analog general scale factor', 4, '<f', self._gen_scale)
         add_empty_array('SCALE', 'analog channel scale factors', 4)
         add_empty_array('OFFSET', 'analog channel offsets', 2)
