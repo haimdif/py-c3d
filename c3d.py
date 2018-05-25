@@ -925,7 +925,7 @@ class Writer(Manager):
     def __init__(self,
                  point_rate=480.,
                  analog_rate=0.,
-                 point_scale=1.,
+                 point_scale=-1.,
                  point_units='mm  ',
                  gen_scale=1.,
                  point_labels=[]):
@@ -1005,7 +1005,7 @@ class Writer(Manager):
         for points, analog in self._frames:
             valid = points[:, 3] > -1
             raw[~valid, 3] = -1
-            raw[valid, :3] = points[valid, :3] / self._point_scale
+            raw[valid, :3] = points[valid, :3] / scale
             raw[valid, 3] = (
                 ((points[valid, 4]).astype(np.uint8) << 8) |
                 (points[valid, 3] / scale).astype(np.uint16)
@@ -1060,7 +1060,7 @@ class Writer(Manager):
         add_str('X_SCREEN', 'X_SCREEN parameter', '+X', 2)
         add_str('Y_SCREEN', 'Y_SCREEN parameter', '+Y', 2)
         add_str('UNITS', '3d data units', self._point_units, len(self._point_units))
-        if len(point_labels) == 0:
+        if len(self._point_labels) == 0:
             add_str('LABELS', 'labels', ''.join('M%03d ' % i for i in range(ppf)), 5, ppf)
         else:
             add_str('LABELS', 'labels', ''.join(self._point_labels), len(self._point_labels[0]), len(self._point_labels))
