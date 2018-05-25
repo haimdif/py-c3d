@@ -927,7 +927,8 @@ class Writer(Manager):
                  analog_rate=0.,
                  point_scale=1.,
                  point_units='mm  ',
-                 gen_scale=1.):
+                 gen_scale=1.,
+                 point_labels=[]):
         '''Set metadata for this writer.
 
         '''
@@ -937,6 +938,7 @@ class Writer(Manager):
         self._point_scale = point_scale
         self._point_units = point_units
         self._gen_scale = gen_scale
+        self._point_labels = point_labels
         self._frames = []
 
     def add_frames(self, frames):
@@ -1058,7 +1060,10 @@ class Writer(Manager):
         add_str('X_SCREEN', 'X_SCREEN parameter', '+X', 2)
         add_str('Y_SCREEN', 'Y_SCREEN parameter', '+Y', 2)
         add_str('UNITS', '3d data units', self._point_units, len(self._point_units))
-        add_str('LABELS', 'labels', ''.join('M%03d ' % i for i in range(ppf)), 5, ppf)
+        if len(point_labels) == 0:
+            add_str('LABELS', 'labels', ''.join('M%03d ' % i for i in range(ppf)), 5, ppf)
+        else:
+            add_str('LABELS', 'labels', ''.join(self._point_labels), len(self._point_labels[0]), len(self._point_labels))
         add_str('DESCRIPTIONS', 'descriptions', ' ' * 16 * ppf, 16, ppf)
 
         # ANALOG group
